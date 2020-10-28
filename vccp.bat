@@ -24,7 +24,7 @@ if not "%ProgramFiles(x86)%" == "" set PROGFILES=%ProgramFiles(x86)%
 
 set counter=0
 
-REM Check if Visual Studio 2019 is installed
+REM Check if Visual Studio 2019 Community is installed
 set MSVCDIR="%PROGFILES%\Microsoft Visual Studio\2019"
 set VCVARSALLPATH="%PROGFILES%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat"
 if exist %MSVCDIR% (
@@ -32,26 +32,51 @@ if exist %MSVCDIR% (
    	set COMPILER_VER="2019"
 	
 	set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2019
+	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2019 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64_x86
 	
     set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2019
+	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2019 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86_x64
 	
 	set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2019
+	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2019 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
 	
 	set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2019
+	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2019 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86
 	
   )
 )
 
+REM Check if Visual Studio 2019 BuildTools is installed
+set MSVCDIR="%PROGFILES%\Microsoft Visual Studio\2019"
+set VCVARSALLPATH="%PROGFILES%\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
+if exist %MSVCDIR% (
+  if exist %VCVARSALLPATH% (
+   	set COMPILER_VER="2019"
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2019 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64_x86
+	
+    set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2019 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86_x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2019 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2019 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86
+	
+  )
+)
 
-REM Check if Visual Studio 2017 is installed
+REM Check if Visual Studio 2017 Community is installed
 set MSVCDIR="%PROGFILES%\Microsoft Visual Studio\2017"
 set VCVARSALLPATH="%PROGFILES%\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat"
 if exist %MSVCDIR% (
@@ -59,23 +84,50 @@ if exist %MSVCDIR% (
    	set COMPILER_VER="2017"
 
 	set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2017
+	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2017 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64_x86
 	
     set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2017
+	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2017 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86_x64
 	
 	set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2017
+	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2017 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
 	
 	set /A counter=counter+1
-	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2017
+	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2017 Community
 	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
 	
   )
 )
+
+REM Check if Visual Studio 2017 BuildTools is installed
+set MSVCDIR="%PROGFILES%\Microsoft Visual Studio\2017"
+set VCVARSALLPATH="%PROGFILES%\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
+if exist %MSVCDIR% (
+  if exist %VCVARSALLPATH% (
+   	set COMPILER_VER="2017"
+
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2017 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64_x86
+	
+    set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2017 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86_x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2017 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2017 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
+	
+  )
+)
+
 REM Check if Visual Studio 2015 is installed
 set MSVCDIR="%PROGFILES%\Microsoft Visual Studio 14.0"
 set VCVARSALLPATH="%PROGFILES%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
