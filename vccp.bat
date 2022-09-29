@@ -10,7 +10,7 @@ rem +------------------------------------------------+
 rem ---------------------
 rem   Default Variables
 rem ---------------------
-set $scriptVersion=0.9.0
+set $scriptVersion=0.9.1
 
 set $cliMode=0
 
@@ -21,8 +21,60 @@ title Visual Studio CLI Version Launcher v%$scriptVersion%
 
 set PROGFILES=%ProgramFiles%
 if not "%ProgramFiles(x86)%" == "" set PROGFILES=%ProgramFiles(x86)%
-
+set PROGFILES64=%ProgramFiles%
 set counter=0
+
+REM Check if Visual Studio 2022 Community is installed
+set MSVCDIR="%PROGFILES64%\Microsoft Visual Studio\2022"
+set VCVARSALLPATH="%PROGFILES64%\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat"
+if exist %MSVCDIR% (
+  if exist %VCVARSALLPATH% (
+   	set COMPILER_VER="2022"
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2022 Community
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64_x86
+	
+    set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2022 Community
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86_x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2022 Community
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2022 Community
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86
+	
+  )
+)
+
+REM Check if Visual Studio 2022 BuildTools is installed
+set MSVCDIR="%PROGFILES64%\Microsoft Visual Studio\2022"
+set VCVARSALLPATH="%PROGFILES64%\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
+if exist %MSVCDIR% (
+  if exist %VCVARSALLPATH% (
+   	set COMPILER_VER="2022"
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64_x86 Cross Tools Command Prompt for VS 2022 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64_x86
+	
+    set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86_x64 Cross Tools Command Prompt for VS 2022 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86_x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x64 Native Tools Command Prompt for VS 2022 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x64
+	
+	set /A counter=counter+1
+	set $availableVCItemLabel[!counter!]=x86 Native Tools Command Prompt for VS 2022 BuildTools
+	set $availableVCVARSALLPATH[!counter!]=%VCVARSALLPATH% x86
+	
+  )
+)
 
 REM Check if Visual Studio 2019 Community is installed
 set MSVCDIR="%PROGFILES%\Microsoft Visual Studio\2019"
